@@ -83,7 +83,7 @@ class Application(tk.Frame):
                 self.worksheet['B'+str(n)] = name_dest
                 self.worksheet['C'+str(n)] = fullname_dest
                 self.worksheet['D'+str(n)].value = fullpath_dest
-                self.worksheet['D'+str(n)].hyperlink = fullpath_dest
+                self.worksheet['D'+str(n)].hyperlink = "file://" + fullpath_dest
                 n += 1
         catalog = self.pathValue + '.xlsx'
         self.workbook.save(catalog)
