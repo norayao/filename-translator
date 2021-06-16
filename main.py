@@ -56,7 +56,6 @@ class Application(tk.Frame):
 
         # 显示结果
 
-
     # 打开文件并显示路径
     def select_dir(self):
         default_dir = r"文件路径"
@@ -79,19 +78,18 @@ class Application(tk.Frame):
                 fullpath_src = os.path.join(self.pathValue, fullname_src)
                 fullpath_dest = os.path.join(self.pathValue, fullname_dest)
                 os.rename(fullpath_src, fullpath_dest)
-                self.worksheet['A'+str(n)] = name_src
-                self.worksheet['B'+str(n)] = name_dest
-                self.worksheet['C'+str(n)] = fullname_dest
-                self.worksheet['D'+str(n)].value = fullpath_dest
-                self.worksheet['D'+str(n)].hyperlink = "file://" + fullpath_dest
+                self.worksheet['A' + str(n)] = name_src
+                self.worksheet['B' + str(n)] = name_dest
+                self.worksheet['C' + str(n)] = fullname_dest
+                self.worksheet['D' + str(n)].value = fullpath_dest
+                self.worksheet['D' + str(n)].hyperlink = "file://" + fullpath_dest
                 n += 1
         catalog = self.pathValue + '.xlsx'
         self.workbook.save(catalog)
 
-        label_text = self.pathValue+" done"
-        self.result_lable = tk.Label(self, text=label_text)
+        label_text = self.pathValue + "     汉化完成"
+        self.result_lable = tk.Label(self, text=label_text, wraplength=350, justify='center')
         self.result_lable.grid(row=2, column=1, padx=5, pady=10)
-
 
     def achieve_filenames(self, path):
         filenames = []
@@ -105,14 +103,10 @@ class Application(tk.Frame):
         return self.refactor(translate_text)
 
 
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("文件名翻译")
-    root.geometry("500x300+600+300")
+    root.geometry("600x400+600+300")
 
     app = Application(master=root)
     app.mainloop()
-
-
-
